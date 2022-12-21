@@ -11,14 +11,15 @@ router.get('/notes', (req, res) => {
 
 function createNewNote(body, notesArray) {
     const newNote = body;
-    if (!Array.isArray(notesArray)){notesArray = [];}
-
+    if (!Array.isArray(notesArray))
+        notesArray = [];
+        
     body.id = notesArray[0];
     notesArray[0]++;
 
     notesArray.push(newNote);
     fs.writeFileSync(
-        path.join(__dirname, '../db/db.json'),
+        path.join(__dirname, './db/db.json'),
         JSON.stringify(notesArray, null, 2)
     );
     return newNote;
@@ -39,7 +40,6 @@ function deleteNote(id, notesArray) {
                 path.join(__dirname, '../db/db.json'),
                 JSON.stringify(notesArray, null, 2)
             );
-            
             break;
         }
     }
