@@ -15,6 +15,8 @@
 
   ## Usage
 
+  Deploy it from the repository here! [![Deploy](./assets/button.svg)](https://heroku.com/deploy/Note-Taker)
+
   ## Licenses
 
   ## Contributing
@@ -24,6 +26,6 @@
   ## Questions
   Have questions about this project?  
   GitHub: https://github.com/JoshuaToback  
-  Email: joshuatobackva@gmail.com
+  Email: joshuatobackdev@gmail.com
   ## Credits
   Joshua Toback

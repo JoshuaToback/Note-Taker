@@ -1,0 +1,6 @@
+{
+    "name": "Note-Taker",
+    "description": "A notes app that stores data and displays it on screen with Express.",
+    "repository": "https://github.com/JoshuaToback/Note-Taker",
+    "keywords": ["node", "express"]
+  }
