@@ -13,9 +13,11 @@
   Sometimes it's better to write down your notes in one easy place, and this app does all of that for you! Using a server to deploy, this app autogenerates a note taker JUST for you!
   ## Installation
 
+  Deploy it from the repository here! [![Deploy](./assets/button.svg)](https://quiet-lowlands-68606.herokuapp.com/)
+
+
   ## Usage
 
-  Deploy it from the repository here! [![Deploy](./assets/button.svg)](https://heroku.com/deploy/Note-Taker)
 
   ## Licenses
 

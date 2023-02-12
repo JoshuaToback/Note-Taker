@@ -1,53 +1,42 @@
-const allNotes = require('../db/db.json');
-const fs = require('fs');
 const router = require('express').Router();
-const path = require('path');
 
+const store = require('../db/store');
+
+// requesting the existing notes
 
 router.get('/notes', (req, res) => {
-    res.json(allNotes);
-});
+    store
+        .getNotes()
+        .then(notes => {
+            res.json(notes)
+        })
+        .catch(err => {
+            res.status(500).json(err)
+        })
+})
 
-
-function createNewNote(body, notesArray) {
-    const newNote = body;
-    if (!Array.isArray(notesArray))
-        notesArray = [];
-        
-    body.id = notesArray[0];
-    notesArray[0]++;
-
-    notesArray.push(newNote);
-    fs.writeFileSync(
-        path.join(__dirname, './db/db.json'),
-        JSON.stringify(notesArray, null, 2)
-    );
-    return newNote;
-}
+// posting note function route 
 
 router.post('/notes', (req, res) => {
-    const newNote = createNewNote(req.body, allNotes);
-    res.json(newNote);
-});
+    console.log(req.body)
+    store
+        .addNote(req.body)
+        .then(note => {
+            res.json(note)
+        })
+        .catch(err => {
+            res.status(500).json(err)
+        })
+})
 
-function deleteNote(id, notesArray) {
-    for (let i = 0; i < notesArray.length; i++) {
-        let note = notesArray[i];
 
-        if (note.id == id) {
-            notesArray.splice(i, 1);
-            fs.writeFileSync(
-                path.join(__dirname, '../db/db.json'),
-                JSON.stringify(notesArray, null, 2)
-            );
-            break;
-        }
-    }
-}
+// delete note function route
 
 router.delete('/notes/:id', (req, res) => {
-    deleteNote(req.params.id, allNotes);
-    res.json(true);
-});
+    store
+        .removeNote(req.params.id)
+        .then(() => res.json({ ok: true }))
+        .catch(err => res.status(500).json(err))
+})
 
 module.exports = router;
